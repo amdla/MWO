@@ -1,19 +1,23 @@
 ```mermaid
 requirementDiagram
+    requirement ticketPayment {
+        text: "Płacenie za bilet różnymi metodami: kartą, gotówką, telefonem."
+    }
+    requirement ticketUpdate {
+        text: "Aktualizowanie zdalne oprogramowania biletomatów"
+    }
     requirement ticketSelection {
-        text: "Szybki wybór rodzaju biletu"
+        text: "Wybór oferty"
         }
     requirement languageSelection {
         text: "Wybór języka biletomatu"
         }
     requirement transactionVerification {
-        text: "Sprawdzenie poprawności transakcji"
+        text: "Zakup biletu"
         }
-
     requirement configTickets {
         text: "Konfiguracja dostępnych biletów, promocji i taryf w systemie centralnym"
     }
-
     element User {
         type: simulation
     }
@@ -24,5 +28,7 @@ requirementDiagram
 
     User - satisfies -> ticketSelection
     User - satisfies -> languageSelection
-    User - satisfies -> transactionVerification
     Administrator - satisfies -> configTickets
+    Administrator - satisfies -> ticketUpdate
+    transactionVerification - traces -> ticketPayment
+    ticketSelection - traces -> transactionVerification
