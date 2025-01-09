@@ -1,3 +1,4 @@
+```mermaid
 requirementDiagram
     requirement W1 {
         id: 1
